@@ -9,6 +9,7 @@ import { toUiNodePartial } from './pkg/ui'
 import {
   register404Route,
   register500Route,
+  registerDashboardRoute,
   registerErrorRoute,
   registerHealthRoute,
   registerLoginRoute,
@@ -43,6 +44,7 @@ app.engine(
 )
 
 registerStaticRoutes(app)
+registerDashboardRoute(app)
 registerHealthRoute(app)
 registerLoginRoute(app)
 registerRecoveryRoute(app)
@@ -54,7 +56,7 @@ registerErrorRoute(app)
 registerWelcomeRoute(app)
 
 app.get('/', (req: Request, res: Response) => {
-  res.redirect('welcome', 303)
+  res.redirect('dashboard', 303)
 })
 
 register404Route(app)
