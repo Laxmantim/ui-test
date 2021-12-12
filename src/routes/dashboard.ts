@@ -15,6 +15,20 @@ export const createDashboardRoute: RouteCreator =
     const session = req.session
     // const client = req.
 
+    // const csapiUrl = 
+    // (
+    //     await sdk
+    //     .
+    // )
+
+    // const immediatelyResolvedPromise = (url: string) => {
+    //     const resultPromise = new Promise((resolve, reject) => {
+    //         resolve(fetch(csapiUrl))
+    //     })
+    //     return  resultPromise
+    // }
+
+
     // Create a logout URL
     const logoutUrl =
       (
