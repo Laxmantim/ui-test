@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import axios from 'axios'
 
 import {
   defaultConfig,
@@ -7,13 +8,55 @@ import {
   setSession
 } from '../pkg'
 
+import {
+  V0alpha2Api as OpenSourceV0alpha2Api,
+  V0alpha2ApiInterface
+} from '@ory/kratos-client'
+import React from 'react'
+
 export const createDashboardRoute: RouteCreator =
 (createHelpers) => async (req, res) => {
     res.locals.projectName = 'Dashboard'
 
+    let[clientData, setClientData] = React.useState('')
     const { sdk } = createHelpers(req)
     const session = req.session
-    // const client = req.
+
+    axios({
+      method:'post',
+      url: 'http://192.168.1.131:3005/v1/client',
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+      data: session
+    })
+    .then(response => {
+        setClientData(response.data)
+        console.log(JSON.stringify(response.data))
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+    // const axios = require('axios')
+    // const client = await axios.get('192.168.0.6:3005/v1/client', session)
+
+    // client.headers['content-type']
+    
+    // const Url = '192.168.0.6:3005/v1/client'
+    // axios.get(Url, session.json())
+    // .then(data=>console.log(data))
+    // .catch(err=>console.log(err))
+
+    // axios({
+    //   method: 'post',
+    //   url: Url,
+    //   data: {
+    //     session
+    //   }
+    // })
+    // .then(data=>console.log(data))
+    // .catch(err=>console.log(err))
 
     // const csapiUrl = 
     // (
