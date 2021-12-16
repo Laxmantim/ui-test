@@ -21,7 +21,6 @@ export const createDashboardRoute: RouteCreator =
     const { sdk } = createHelpers(req)
     const axios = require('axios')
     const session = req.session
-    var output 
 
     var config = {
       method:'get',
@@ -33,46 +32,14 @@ export const createDashboardRoute: RouteCreator =
     }
     axios(config)
     .then(function (response: { data: React.Dispatch<React.SetStateAction<string>> }) {
-      output = JSON.stringify(response.data)
+      // output = JSON.stringify(response.data)
       console.log(JSON.stringify(response.data))
     })
     .catch(function (error: any) {
       console.log(error)
     })
+    const output = response
 
-
-    // const axios = require('axios')
-    // const client = await axios.get('192.168.0.6:3005/v1/client', session)
-
-    // client.headers['content-type']
-    
-    // const Url = '192.168.0.6:3005/v1/client'
-    // axios.get(Url, session.json())
-    // .then(data=>console.log(data))
-    // .catch(err=>console.log(err))
-
-    // axios({
-    //   method: 'post',
-    //   url: Url,
-    //   data: {
-    //     session
-    //   }
-    // })
-    // .then(data=>console.log(data))
-    // .catch(err=>console.log(err))
-
-    // const csapiUrl = 
-    // (
-    //     await sdk
-    //     .
-    // )
-
-    // const immediatelyResolvedPromise = (url: string) => {
-    //     const resultPromise = new Promise((resolve, reject) => {
-    //         resolve(fetch(csapiUrl))
-    //     })
-    //     return  resultPromise
-    // }
 
 
     // Create a logout URL
@@ -84,10 +51,10 @@ export const createDashboardRoute: RouteCreator =
       ).data.logout_url || ''
 
       res.render('dashboard', {
-        output: response
+        output: output
           ? JSON.stringify(output, null, 2)
-          : `No valid Ory Session was found.
-  Please sign in to receive one.`,
+          : `Hi I'm Paul.
+  The guy from Jimmy Neutron.`,
         hasSession: Boolean(session),
         logoutUrl
       })
