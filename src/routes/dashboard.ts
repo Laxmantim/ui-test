@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import {
   defaultConfig,
+  redirectOnSoftError,
   RouteCreator,
   RouteRegistrator,
   setSession
@@ -21,7 +22,8 @@ export const createDashboardRoute: RouteCreator =
     const { sdk } = createHelpers(req)
     const axios = require('axios')
     const session = req.session
-    var output 
+    var output
+    
 
     var config = {
       method:'get',
@@ -31,16 +33,15 @@ export const createDashboardRoute: RouteCreator =
       },
       data: session
     }
-    axios(config)
-    .then(function (response: { data: React.Dispatch<React.SetStateAction<string>> }) {
-      output = JSON.stringify(response.data)
-      console.log(JSON.stringify(response.data))
-    })
-    .catch(function (error: any) {
-      console.log(error)
-    })
+      const clientData = await axios(config);
+      //console.log("clientData: " , clientData)
+      output = clientData.data;
+    
+      
+    
+    
 
-
+    
     // const axios = require('axios')
     // const client = await axios.get('192.168.0.6:3005/v1/client', session)
 
@@ -84,7 +85,7 @@ export const createDashboardRoute: RouteCreator =
       ).data.logout_url || ''
 
       res.render('dashboard', {
-        output: response
+        output: output
           ? JSON.stringify(output, null, 2)
           : `No valid Ory Session was found.
   Please sign in to receive one.`,
@@ -100,3 +101,5 @@ export const createDashboardRoute: RouteCreator =
       ) => {
         app.get(route, setSession(createHelpers), createDashboardRoute(createHelpers))
       }
+
+
