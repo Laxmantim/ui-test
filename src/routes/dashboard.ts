@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, response, Response } from 'express'
 import axios from 'axios'
 
 import {
@@ -18,25 +18,28 @@ export const createDashboardRoute: RouteCreator =
 (createHelpers) => async (req, res) => {
     res.locals.projectName = 'Dashboard'
 
-    let[clientData, setClientData] = React.useState('')
     const { sdk } = createHelpers(req)
+    const axios = require('axios')
     const session = req.session
+    var output 
 
-    axios({
-      method:'post',
-      url: 'http://192.168.1.131:3005/v1/client',
+    var config = {
+      method:'get',
+      url: 'http://192.168.1.131:3005/v1/client?c_uuid=1f4f0e08-3b63-4be3-aeea-2eaa8d3d0c8b',
       headers: {
         'Content-Type' : 'application/json'
       },
       data: session
+    }
+    axios(config)
+    .then(function (response: { data: React.Dispatch<React.SetStateAction<string>> }) {
+      output = JSON.stringify(response.data)
+      console.log(JSON.stringify(response.data))
     })
-    .then(response => {
-        setClientData(response.data)
-        console.log(JSON.stringify(response.data))
-    })
-    .catch((error) => {
+    .catch(function (error: any) {
       console.log(error)
     })
+
 
     // const axios = require('axios')
     // const client = await axios.get('192.168.0.6:3005/v1/client', session)
@@ -81,8 +84,8 @@ export const createDashboardRoute: RouteCreator =
       ).data.logout_url || ''
 
       res.render('dashboard', {
-        session: session
-          ? JSON.stringify(session, null, 2)
+        output: response
+          ? JSON.stringify(output, null, 2)
           : `No valid Ory Session was found.
   Please sign in to receive one.`,
         hasSession: Boolean(session),
