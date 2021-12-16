@@ -34,47 +34,7 @@ export const createDashboardRoute: RouteCreator =
       data: session
     }
       const clientData = await axios(config);
-      //console.log("clientData: " , clientData)
       output = clientData.data;
-    
-      
-    
-    
-
-    
-    // const axios = require('axios')
-    // const client = await axios.get('192.168.0.6:3005/v1/client', session)
-
-    // client.headers['content-type']
-    
-    // const Url = '192.168.0.6:3005/v1/client'
-    // axios.get(Url, session.json())
-    // .then(data=>console.log(data))
-    // .catch(err=>console.log(err))
-
-    // axios({
-    //   method: 'post',
-    //   url: Url,
-    //   data: {
-    //     session
-    //   }
-    // })
-    // .then(data=>console.log(data))
-    // .catch(err=>console.log(err))
-
-    // const csapiUrl = 
-    // (
-    //     await sdk
-    //     .
-    // )
-
-    // const immediatelyResolvedPromise = (url: string) => {
-    //     const resultPromise = new Promise((resolve, reject) => {
-    //         resolve(fetch(csapiUrl))
-    //     })
-    //     return  resultPromise
-    // }
-
 
     // Create a logout URL
     const logoutUrl =
@@ -87,8 +47,8 @@ export const createDashboardRoute: RouteCreator =
       res.render('dashboard', {
         output: output
           ? JSON.stringify(output, null, 2)
-          : `No valid Ory Session was found.
-  Please sign in to receive one.`,
+          : `Hi I'm Paul.
+  The guy from Jimmy Neutron.`,
         hasSession: Boolean(session),
         logoutUrl
       })
