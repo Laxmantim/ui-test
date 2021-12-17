@@ -3,30 +3,30 @@
     <div class="card">
       <h2 class="typography-h2 card-title">443ID Dashboard</h2>
       <p class="typography-paragraph">
-        Paragraph
+        Hello Customer! we are excited to have you!
       </p>
       <div class="row">
         <div class="col-md-4 col-xs-12">
           <div class="box">
-            <h2 class="typography-h3">Documentation</h2>
+            <h2 class="typography-h3">Customize your Score</h2>
             <p class="typography-paragraph">
-              Here are some useful documentation pieces that help you get started.
+              Here are some links to customize your account.
             </p>
             <div class="row">
-              {{> ui_docs_button testId="get-started" href="https://www.ory.sh/docs/get-started" label="Get Started"}}
-              {{> ui_docs_button testId="user-flows" href="https://www.ory.sh/docs/concepts/self-service" label="User Flows"}}
-              {{> ui_docs_button testId="identities" href="https://www.ory.sh/docs/concepts/identity" label="Identities"}}
-              {{> ui_docs_button testId="sessions" href="https://www.ory.sh/docs/concepts/session" label="Sessions"}}
-              {{> ui_docs_button testId="sessions443" href="https://www.ory.sh/docs/concepts/session443" label="443"}}
-              {{> ui_docs_button testId="customize-ui" href="https://www.ory.sh/docs/guides/bring-your-user-interface" label="Bring Your Own UI"}}
+              {{> ui_docs_button testId="get-started" href="https://www.ory.sh/docs/get-started" label="Policies"}}
+              {{> ui_docs_button testId="user-flows" href="https://www.ory.sh/docs/concepts/self-service" label="Applications"}}
+              {{> ui_docs_button testId="identities" href="https://www.ory.sh/docs/concepts/identity" label="Policy Access Keys"}}
+              {{> ui_docs_button testId="sessions" href="https://www.ory.sh/docs/concepts/session" label="Documentation"}}
+              {{> ui_docs_button testId="sessions443" href="https://www.ory.sh/docs/concepts/session443" label="Support"}}
+              {{> ui_docs_button testId="customize-ui" href="https://www.ory.sh/docs/guides/bring-your-user-interface" label="Settings"}}
             </div>
           </div>
         </div>
         <div class="col-md-8 col-xs-12">
           <div class="box">
-            <h2 class="typography-h3">Session Information</h2>
+            <h2 class="typography-h3">Client Information</h2>
             <p class="typography-paragraph">
-              Below you will find the decoded Ory Session if you are logged in.
+              Below you will find the decoded Client Information if you are logged in.
             </p>
             <pre class="code-box"><code>{{output}}</code></pre>
           </div>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="card">
-      <h2 class="typography-h2">Other User Interface Screens</h2>
+      <h2 class="typography-h2">Session</h2>
       <div class="row">
         {{> ui_screen_button testId="login" link="login" label="Sign In" disabled=hasSession}}
         {{> ui_screen_button testId="sign-up" link="registration" label="Sign Up" disabled=hasSession}}
