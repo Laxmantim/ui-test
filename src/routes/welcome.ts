@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import axios from 'axios'
 
 import {
   defaultConfig,
@@ -13,6 +14,12 @@ export const createWelcomeRoute: RouteCreator =
 
     const { sdk } = createHelpers(req)
     const session = req.session
+
+  //   if(session?.identity.id )
+  //   await axios.post('http://192.168.1.131:3005/v1/client', session, {headers:{
+  //     'Content-Type' : 'application/json'
+  //   }
+  // })
 
     // Create a logout URL
     const logoutUrl =

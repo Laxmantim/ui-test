@@ -17,6 +17,8 @@ export const createRegistrationRoute: RouteCreator =
     const { flow, return_to = '' } = req.query
     const helpers = createHelpers(req)
     const { sdk, apiBaseUrl } = helpers
+    const axios = require('axios')
+    //const session = req.session
     const initFlowUrl = getUrlForFlow(
       apiBaseUrl,
       'registration',
@@ -50,7 +52,11 @@ export const createRegistrationRoute: RouteCreator =
         })
       })
       .catch(redirectOnSoftError(res, next, initFlowUrl))
+
+
   }
+  
+  
 
 export const registerRegistrationRoute: RouteRegistrator = (
   app,

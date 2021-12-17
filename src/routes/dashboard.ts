@@ -24,16 +24,27 @@ export const createDashboardRoute: RouteCreator =
     const session = req.session
     var output
 
-    var config = {
-      method:'get',
-      url: 'http://192.168.1.131:3005/v1/client?c_uuid=' + session?.identity.id,
-      headers: {
-        'Content-Type' : 'application/json'
-      },
-      data: session
-    }
+
+    try{
+      var config = {
+        method:'get',
+        url: 'http://192.168.1.131:3005/v1/client?c_uuid=' + session?.identity.id,
+        headers: {
+          'Content-Type' : 'application/json'
+        },
+        data: session
+      }
       const clientData = await axios(config);
       output = clientData.data;
+    }catch(err){
+      if(err !== 200){
+        await axios.post('http://192.168.1.131:3005/v1/client', session, {headers:{
+          'Content-Type' : 'application/json'
+        }
+        })
+      }
+    }  
+
 
     // Create a logout URL
     const logoutUrl =
