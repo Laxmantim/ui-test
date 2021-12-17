@@ -23,11 +23,10 @@ export const createDashboardRoute: RouteCreator =
     const axios = require('axios')
     const session = req.session
     var output
-    
 
     var config = {
       method:'get',
-      url: 'http://192.168.1.131:3005/v1/client?c_uuid=1f4f0e08-3b63-4be3-aeea-2eaa8d3d0c8b',
+      url: 'http://192.168.1.131:3005/v1/client?c_uuid=' + session?.identity.id,
       headers: {
         'Content-Type' : 'application/json'
       },
