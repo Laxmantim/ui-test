@@ -38,7 +38,7 @@ export const createDashboardRoute: RouteCreator =
       output = clientData.data;
     }catch(err){
       if(err !== 200){
-        await axios.post('http://192.168.1.131:3005/v1/client', session, {headers:{
+        axios.post('http://192.168.1.131:3005/v1/client', session, {headers:{
           'Content-Type' : 'application/json'
         }
         })
@@ -57,8 +57,7 @@ export const createDashboardRoute: RouteCreator =
       res.render('dashboard', {
         output: output
           ? JSON.stringify(output, null, 2)
-          : `Hi I'm Paul.
-  The guy from Jimmy Neutron.`,
+          : res.redirect('welcome'),
         hasSession: Boolean(session),
         logoutUrl
       })
