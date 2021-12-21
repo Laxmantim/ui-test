@@ -41,6 +41,7 @@
       <div class="row">
         {{> ui_screen_button testId="login" link="login" label="Sign In" disabled=hasSession}}
         {{> ui_screen_button testId="sign-up" link="registration" label="Sign Up" disabled=hasSession}}
+        {{> ui_screen_button testId="redirect-dashboard" link="dashboard" label="Dashboard" disabled=(not hasSession)}}
         {{> ui_screen_button testId="recover-account" link="recovery" label="Recover Account" disabled=hasSession}}
         {{> ui_screen_button testId="verify-account" link="verification" label="Verify Account"}}
         {{> ui_screen_button testId="account-settings" link="settings" label="Account Settings" disabled=(not hasSession)}}
