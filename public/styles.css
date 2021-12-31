@@ -112,7 +112,12 @@ fieldset {
     color:black;
 }
 
-.input-button a.button:active {
+.input-button a.button:active,
+.input-button a.button::selection,
+.input-button .button:active,
+.input-button .button::selection,
+.input-button a.button[aria-disabled="false"],
+.input-button a.button[aria-disabled="false"]:hover {
     background-color: #0072A0;
 }
 
@@ -130,3 +135,15 @@ form img {
     margin: 0 auto;
     display: block;
 }
+
+.fork-me,
+.input-button .button {
+    background-color: #37C6FF;
+}
+
+.typography-link{
+    color: #37C6FF;
+}
+
+
+
