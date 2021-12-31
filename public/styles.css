@@ -43,8 +43,10 @@ main {
 }
 
 .card-title {
+    font-size: 20px;
+    font-weight: 600;
     text-align: center;
-    color: var(--primary60);
+    color: black;
 }
 
 .card-action {
@@ -77,7 +79,7 @@ fieldset {
 }
 
 .required-indicator {
-    color: var(--primary60);
+    color: black;
 }
 
 .checkbox {
@@ -102,12 +104,22 @@ fieldset {
     display: block;
     box-sizing: border-box;
     text-decoration: none;
+    background-color: #37C6FF;
+}
+
+.input-button a.button:hover {
+    background-color: lightgrey;
+    color:black;
+}
+
+.input-button a.button:active {
+    background-color: #0072A0;
 }
 
 .input-button a.button[aria-disabled="true"],
 .input-button a.button[aria-disabled="true"]:hover {
-    color: #B4B4BB;
-    background-color: #E1E1E3;
+    color: black;
+    background-color: lightgrey;
 }
 
 .recovery-code {

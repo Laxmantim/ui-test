@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import axios from 'axios'
+import ReactDOM from 'react-dom'
 
 import {
   defaultConfig,
@@ -7,6 +8,7 @@ import {
   RouteRegistrator,
   setSession
 } from '../pkg'
+import { buttonStyles } from '@ory/themes'
 
 export const createWelcomeRoute: RouteCreator =
   (createHelpers) => async (req, res) => {

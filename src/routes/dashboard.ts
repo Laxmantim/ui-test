@@ -25,7 +25,7 @@ export const createDashboardRoute: RouteCreator =
     var output
 
 
-    try{
+   try{
       var config = {
         method:'get',
         url: 'http://192.168.1.131:3005/v1/client?c_uuid=' + session?.identity.id,
@@ -36,12 +36,10 @@ export const createDashboardRoute: RouteCreator =
       }
       const clientData = await axios(config);
       output = clientData.data;
-    }catch(err){
-      if(err !== 200){
-        axios.post('http://192.168.1.131:3005/v1/client', session, {headers:{
-          'Content-Type' : 'application/json'
-        }
-        })
+   }catch(err){
+     if(err !== 200){
+      axios.post('http://192.168.1.131:3005/v1/client', session, {headers:{
+        'Content-Type' : 'application/json'}})
       }
     }  
 
